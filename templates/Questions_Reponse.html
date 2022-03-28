@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <h1>Questions  Reponse</h1>
+  <h2>Questions/ Expliquez les concepts POO suivants en expliquant dans quel cas nous pouvons utiliser ces éléments et comment techniquement ils s’utilisent : L'héritage? 
+
+  <h2>Reponse</h2>
+  <h2>C’est le fait de baser la définition d’une classe (fille) sur une autre (mère), afin d’en récupérer les membres (champs et méthodes).</h2>
+  <h2>Example: Pizza-reine,regina,hawai dont Contiens le Membre de Pizza</h2>
+
+  <script>     
+  // Hérite de Repas, et possède donc un Chef
+  class Pizza : Repas
+{
+    public string Pate { get; }
+    public string Base { get; }
+    public Pizza(Chef chef, string pate, string pizzaBase):base(chef)
+    {
+        Pate = pate;
+        Base = pizzaBase;
+    }
+  </script> 
+
+<h2>Le interface, Reponse :</h2>
+<h2>C est une classe qui ne contient que des méthodes, et qui ne est pas instanciable.
+  Il s agit dun ensemble de signatures de méthodes sans implémentation, et les classes liées à cette interface devront obligatoirement implémenter ces méthodes.</h2>
+  <h2>Exemple</h2>
+  
+  <h2>Déclaration d'une interface :</h2>
+  
+  [public] interface nomInterface [extends nomInterface1, nomInterface2 ... ] {
+    // insérer ici des méthodes ou des champs static
+}
+
+  <h2>Réponse: Méthose Abstraite 
+    </h2>
+  
+    <h2>Les classes abstraites s'inscrivent davantage dans la sûreté de la programmation orientée objet. La première particularité d'une classe abstraite, c'est qu'elle ne peut être instanciée (et donc créer un objet). De cette affirmation, on en déduit logiquement qu'une classe abstraite est déclarée afin d'être dérivée par des classes concrètes.
+
+    Une classe abstraite se comporte comme une classe concrète typique. C'est-à-dire qu'elle peut déclarer des attributs et des méthodes traditionnels qui seront accessibles dans les classes dérivées. En fonction bien sûr de la visibilité choisie (public, private et protected) pour chacun des attributs et méthodes.</h2>
+
+    <?php
+ 
+    abstract class EtreHumain
+{
+    /**
+    * Sexe de la personne
+    *
+    * @var string
+    */
+    protected $sexe;
+ 
+    /**
+    * Nom de la personne
+    *
+    * @var string
+    */
+    protected $nom;
+ 
+    /**
+     * Met à jour le nom
+    *
+    * @param string $nom
+    * @return void
+    */
+    public function setNom($nom)
+  {
+    $this->nom = $nom;
+  }
+ 
+    /**
+    * Retourne le nom de la personne
+    *
+    * @param void
+    * @return string $nom
+    */
+    public function getNom()
+    {
+    return $this->nom;
+    }
+
+    /**
+    * Retourne le sexe de la personne
+    *
+    * @param void
+    * @return string $sexe
+    */
+    public function getSexe()
+  {
+    return $this->sexe;
+  }
+}
+?>
+
+<h2>Les propriété privée / protected Réponse:</h2>
+
+<h2>Les propriétés privées sont des attributs qui ne peuvent être récupérés qu'en dehors de la classe. Les propriétés protected sont des attributs qui peuvent être récupérés en dehors de la classe, mais pas en dehors de ses classes dérivées.</h2>
+
+<?php
+ 
+class Vehicule
+{
+  // Attributs
+  public $marque;
+  private $_volumeCarburant;
+  protected $_estRepare;
+ 
+  // Méthodes
+  public function __construct() 
+  {
+    $this->_volumeCarburant = 40;
+    $this->_estRepare = false;
+  }
+ 
+  // Démarre la voiture si le réservoir
+  // n'est pas vide
+    public function demarrer() 
+  {
+    if ($this->_controlerVolumeCarburant())
+    {
+      echo 'Le véhicule démarre';
+      return true;
+    }
+ 
+    echo'Le réservoir est vide...';
+    return false;
+  }
+ 
+  // Vérifie s'il y'a du carburant dans le réservoir
+    private function _controlerVolumeCarburant() 
+  {
+    return ($this->_volumeCarburant > 0); // renvoi true ou false
+  }
+ 
+    // Met le véhicule en maintenance
+    protected function reparer()
+  {
+    $this->_estRepare = true;
+    echo 'Le véhicule est en réparation';
+  }
+}
+    <h2>Le méthose statiques Réponse:</h2>
+  
+    <h2>Comme les méthodes statiques peuvent être appelées  sans qu'une instance d'objet n'ait été créée, la pseudo-variable $this n'est pas disponible dans les méthodes déclarées comme statiques.</h2>
+
+    <?php
+    class Foo
+  {
+      public static $my_static = 'foo';
+
+      public function staticValue() {
+          return self::$my_static;
+      }
+  }
+
+    class Bar extends Foo
+  {
+      public function fooStatic() {
+          return parent::$my_static;
+      }
+  }
+  
+    print Foo::$my_static . "\n";
+    $foo = new Foo();
+    print $foo->staticValue() . "\n";
+    print $foo->my_static . "\n"; // "Propriété" my_static non définie
+
+    print $foo::$my_static . "\n";
+    $classname = 'Foo';
+    print $classname::$my_static . "\n";
+
+    print Bar::$my_static . "\n";
+    $bar = new Bar();
+    print $bar->fooStatic() . "\n";
+  ?
+
+</body>
+</html>

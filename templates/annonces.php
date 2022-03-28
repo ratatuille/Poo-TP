@@ -1,0 +1,1 @@
+<?php echo "<br/><br/>Huraaaaay la pages d'annonces, Whôouh!";?>
